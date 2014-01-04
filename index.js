@@ -1,13 +1,23 @@
-var PowerMate = require('node-powermate');
-var powermate = new PowerMate();
-var http = require('http');
-var _ = require('lodash');
+var PowerMate	= require('node-powermate');
+var http	= require('http');
+var _		= require('lodash');
+var config	= require('./config');
 
-var BROWSER_ID = "ef373ef9-330b-41fc-a60b-263e4c358ccc";
-var PANOPTICHROME_API_ROOT = {
-    host: "skadi.bluejeansnet.com",
-    port: 8081,
-};
+var BROWSER_ID = config.browserId;
+var PANOPTICHROME_API_ROOT = config.apiRoot;
+
+var powermate;
+
+try {
+    powermate = new PowerMate();
+} catch(err){
+    if(err.indexOf("cannot open device with path") === 0 && process.getuid() !== 0){
+	console.error("Unable to open HID device. Make sure you are running panoptichrome-powermate as root.");
+    } else {
+	console.error(err);
+    }
+    process.exit(1);
+}
 
 var wheelClicks = 0;
 powermate.on('wheelTurn', _.wrap(function(wheelDelta){
@@ -24,7 +34,7 @@ powermate.on('wheelTurn', _.wrap(function(wheelDelta){
 	}
     });
     req.end(JSON.stringify({ active: true }));
-//    console.log(direction+" tab");
+    console.log(direction+" tab");
 }, function(inner, wheelData){
     if((++wheelClicks % 8) === 0){
 	wheelClicks = 0;
@@ -43,7 +53,7 @@ powermate.on('buttonDown', function(){
 	}
     });
     req.end(JSON.stringify({ powermate: { buttonPressed: true }}));
-//    console.log("button pressed");
+    console.log("button pressed");
 });
 
 powermate.on('buttonUp', function(){

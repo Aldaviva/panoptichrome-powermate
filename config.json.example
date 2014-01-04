@@ -1,0 +1,7 @@
+{
+    "browserId": "068da064-c7ef-4fbc-9b3a-4febe3ee341b",
+    "apiRoot": {
+	"host": "skadi.bluejeansnet.com",
+	"port": "8081"
+    }
+}
