@@ -1,0 +1,9 @@
+{
+    "name": "panoptichrome-powermate",
+    "version": "0.0.1",
+    "author": "Ben Hutchison <ben@aldaviva.com>",
+    "dependencies": {
+	"node-powermate" : "0.0.2",
+	"lodash"         : "2.4.1"
+    }
+}
