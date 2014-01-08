@@ -5,7 +5,7 @@ var request     = require('request');
 
 var BROWSER_ID = config.browserId;
 var PANOPTICHROME_API_ROOT = config.apiRoot;
-var DELAY_BEFORE_RESUMING_TAB_CYCLE = 20*1000;
+var DELAY_BEFORE_RESUMING_TAB_CYCLE = 30*1000;
 
 var powermate;
 var resumeTabCycleDebounced;
