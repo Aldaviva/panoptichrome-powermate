@@ -1,7 +1,4 @@
 {
-    "browserId": "068da064-c7ef-4fbc-9b3a-4febe3ee341b",
-    "apiRoot": {
-	"host": "skadi.bluejeansnet.com",
-	"port": "8081"
-    }
+    "browserId": "{insert panoptichrome client UUID here}",
+    "apiRoot": "http://skadi.bluejeansnet.com:8081/cgi-bin/"
 }
